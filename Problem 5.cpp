@@ -1,31 +1,45 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    int A[10]={8,4,6,1,6,9,6,1,9,8};
-    int r,j=0;
+    int size1, count1, i, j;
+    cout<<"Enter the size of array: ";
+    cin>>size1;
 
-    for(j; j<10;j++)
+    int Array[size1], f[size1];
+
+    cout<<"\nPlease enter the element of an array: \n";
+    for(i=0; i<size1; i++)
     {
-        r=0;
-        for(int k=0;k<10;k++)
-        {
-
-            if(A[j]==A[k])
-            {
-                r++;
-
-
-                }
-
-        }
-        cout<<A[j]<<" occurs = "<<r<< " times\n";
+        cin >> Array[i];
+        f[i] = 0;
     }
 
+    for(i=0; i<size1; i++)
+    {
+        count1 = 1;
+        for(j=i+1; j<size1; j++)
+        {
+            if(Array[i] == Array[j])
+            {
+                count1++;
+                f[j] = -1;
+            }
+        }
 
+        if(f[i] == 0)
+        {
+            f[i] = count1;
+        }
+    }
 
+    for(i=0; i<size1; i++)
+    {
+        if(f[i] != -1)
+        {
+            cout<< Array[i] <<" occurs = " << f[i] << " times."<<endl;
+        }
+    }
     return 0;
 }
-
-
