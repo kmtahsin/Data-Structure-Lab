@@ -3,80 +3,83 @@ using namespace std;
 
 int main()
 {
-    int i=5,j=6,cl=0,k=0,l=1;
-    int array_1[i]={1,4,6,3,6,9};
-    int array_2[j]={5,3,7,1,2,6};
-    int common[cl];
-
-    for(int a=0; a<i;a++)
+    int n1=6,n2=6,i,j,cl=0;
+    int array_1[n1];
+    int array_2[n2];
+    int m[n1+n2];
+    cout<<"Input the size of the first array: ";
+    cin>>n1;
+    cout<<"Enter the first array elements: \n";
+    for(int a=0; a<n1;a++)
     {
-        for(int b=0; b<j;b++)
+        cin>>array_1[a];
+    }
+    cout<<"Input the size of the second array array: ";
+    cin>>n2;
+    cout<<"Enter the second array elements: \n";
+    for(int a=0; a<n2;a++)
+    {
+        cin>>array_2[a];
+    }
+
+
+
+    for(int a=0; a<n1;a++)
+    {
+        for(int b=0; b<n2;b++)
         {
             if(array_1[a]==array_2[b])
             {
+               // cout<<array_1[a]<<"\n";
                 cl++;
             }
             else if(a!=b && array_1[a]==array_1[b])
             {
+                //cout<<array_1[a]<<"\n";
                 cl++;
             }
             else if(a!=b && array_2[a]==array_2[b])
             {
+                //cout<<array_2[a]<<"\n";
                 cl++;
             }
         }
     }
+
+
+
     if(cl>0)
     {
-        for(int a=0; a<i;a++)
-    {
-        for(int b=0; b<j;b++)
+        cout<<"\n\nCommon elements of the arrays: ";
+         for(i=0;i<n1;i++)
+
         {
-            if( array_1[a]==array_2[b])
+
+            for(j=0;j<n2;j++)
+
             {
 
-                    common[k]=array_2[b];
-                    k++;
+                if(array_1[i]==array_2[j])
 
-            }
-            else if(a!=b && array_1[a]==array_1[b])
-            {
-
-                    common[k]=array_1[b];
-                    k++;
-
-            }
-            else if(a!=b && array_2[a]==array_2[b])
-            {
-                for(int m=0;m<cl;m++)
                 {
-                    if(common[m]==array_2[b])
-                        l++;
-                    else l=0;
+
+                    cout<<array_1[i]<<" ";
+
                 }
 
-                if(l==1)
-                {
-                    common[k]=array_2[b];
-                    k++;
-                }
             }
+
         }
-    }
-    for(int m=0; m<cl;m++)
-    {
-        cout<<common[m];
-    }
 
     }
 
     else if(cl==0)
     {
-        cout<<"No common element found";
+        cout<<"\n\nNo common element found";
     }
 
 
-
+    cout<<"\n\n";
 
     return 0;
 }
