@@ -1,26 +1,49 @@
-#include<iostream>
-
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    int A[10]={8,4,6,1,6,9,6,1,9,8};
+    int size1, f=0;
+    cout<<"Enter the size of first array: ";
+    cin>>size1;
 
-    for(int i=1;i<10;i++)
+    int Array[size1];
+    cout<<"\nPlease enter the element of an array: \n";
+    for(int i=0; i<size1; i++)
     {
-        if(A[i-1]==A[i])
+        cin >> Array[i];
+    }
+
+    cout<<"\n\nThe given array is: ";
+    for(int i=0; i<size1; i++)
+    {
+        cout << Array[i] << " ";
+    }
+    cout << endl << endl;
+    cout<<"After removing the common elements: ";
+
+    for (int i = 0; i < size1; i++)
+    {
+        int j;
+        for(j = 0; j < i; j++)
         {
-            for(int j=0;j<10;j++)
+            if (Array[i] == Array[j])
             {
-                A[j]=A[j+1];
+                f = 1;
+                break;
             }
         }
-    }
-    cout<<"Output: ";
-    for(int i=0; i<10;i++)
-    {
-        cout<<A[i]<<"  ";
+
+        if (i == j)
+        {
+            cout << Array[i] << " ";
+        }
     }
 
-return 0;
+    if(f == 0)
+    {
+        cout<<"\n\nThe given array was unique";
+    }
+    cout << endl << endl;
+    return 0;
 }
