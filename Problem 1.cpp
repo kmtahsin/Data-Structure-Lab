@@ -21,6 +21,7 @@ int main()
             c++;
         }
     }
+    
 
     cout<<"Marged array in reverse order: ";
 
