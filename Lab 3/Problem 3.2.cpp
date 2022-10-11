@@ -17,7 +17,7 @@ void encode()
         //cout<<"\n"<<size;
         for(int i=0; i<size;i++)
         {
-            i=i+2;
+            i=i+j;
             c=s[i];
 
             if (c>='a' && c<='z')
