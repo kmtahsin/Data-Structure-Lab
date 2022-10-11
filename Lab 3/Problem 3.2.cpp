@@ -20,7 +20,7 @@ void encode()
             i=i+2;
             c=s[i];
 
-            if (c>='a' && c<'z')
+            if (c>='a' && c<='z')
             {
                 c=c+2;
                 if(c>'z')
@@ -29,7 +29,7 @@ void encode()
                 }
                 s[i]=c;
             }
-            else if (c>='A' && c<'Z')
+            else if (c>='A' && c<='Z')
             {
                 c=c+2;
                 if(c>'Z')
