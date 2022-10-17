@@ -6,102 +6,60 @@ using namespace std;
 class Student
 {
     public:
-        string name[6];
-        int id[6];
-        float cg[6];
-};
+        string name;
+        int id;
+        float cg;
 
-void store()
-{
-    string iname;
-        int iid;
-        float icg;
-    cout<<"Enter Name, ID, CGPA:\n";
-                cin>>iname;
-                Student name=iname;
-                cin>>iid;
-                id=iid;
-                cin>>icg;
-                cg=icg
-                cout<<endl;
-}
-
-void sorting()
+        void store()
         {
-            int min_index =0;
-            float temp=0;
-            int tid=0;
-            string tname="";
-
             cout<<"Enter Name, ID, CGPA:\n";
-            for(int i=0; i<6;i++)
-            {
-                cin>>name[i];
-                cin>>id[i];
-                cin>>cg[i];
-                cout<<endl;
-            }
-
-            for(int i=0; i<6;i++){
-                cout<<name[i]<<" ";
-                cout<<id[i]<<" ";
-                cout<<cg[i]<<" "<<endl;
-            }
-            cout<<endl<<"---------"<<endl;
-            cout<<"After sorting: ";
-
-            for(int i=0; i<6; i++)
-            {
-                min_index = i;
-
-                for(int j=i+1; j<6; j++)
-                {
-                    if(cg[min_index] > cg[j])
-                    {
-                        min_index = j;
-                    }
-                }
-
-                tname = name[min_index];
-                name[min_index] = name[i];
-                name[i] = tname;
-
-                tid = id[min_index];
-                id[min_index] = id[i];
-                id[i] = tid;
-
-                temp = cg[min_index];
-                cg[min_index] = cg[i];
-                cg[i] = temp;
-            }
-
-            for(int i=0; i<6;i++){
-                cout<<name[i]<<" ";
-                cout<<id[i]<<" ";
-                cout<<cg[i]<<" "<<endl;
-            }
-
+            cin>>name;
+            cin>>id;
+            cin>>cg;
             cout<<endl;
         }
+
+        void info()
+        {
+            cout<<name<<"       "<<id<<"     "<<cg<<"       \n";
+        }
+};
 
 int main()
 {
     int n;
     cout<<"How many students: ";
     cin>>n;
+    Student s[n],temp;
+    int min_index;
 
-    for(int j=0; j<n;j++)
-    {
-        Student s[j];
-    }
+    for(int j=0;j<n;j++)
+        {
+            s[j].store();
+        }
 
-    for(int j=0; j<n;j++)
-    {
-        s[j].store();
-    }
+   for(int i=0; i<n; i++)
+            {
+                min_index = i;
+
+                for(int j=i+1; j<n; j++)
+                {
+                    if(s[i].cg > s[j].cg)
+                    {
+                        min_index = j;
+                    }
+                }
 
 
+                temp = s[min_index];
+                s[min_index] = s[i];
+                s[i] = temp;
+            }
 
+            for(int j=0;j<n;j++)
+        {
+            s[j].info();
+        }
 
     return 0;
 }
