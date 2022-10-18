@@ -41,12 +41,14 @@ int main()
    for(int i=0; i<n; i++)
             {
                 min_index = i;
+                int k=i;
 
                 for(int j=i+1; j<n; j++)
                 {
-                    if(s[i].cg > s[j].cg)
+                    if(s[k].cg > s[j].cg)
                     {
                         min_index = j;
+                        k=j;
                     }
                 }
 
