@@ -1,0 +1,163 @@
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+class Student
+{
+    public:
+        int id;
+        string name;
+        float cg;
+        int credit;
+
+        void store()
+        {
+            cout<<"Enter ID, Name, CGPA, Credit Completed:\n";
+            cin>>id;
+            cin>>name;
+            cin>>cg;
+            cin>>credit;
+            cout<<endl;
+        }
+
+        void info()
+        {
+            cout<<id<<"     "<<name<<"       "<<cg<<"       "<<credit<<"\n";
+        }
+};
+
+int main()
+{
+    int n,w,sw,c;
+    char a;
+    cout<<"How many students: ";
+    cin>>n;
+    Student s[n],temp;
+    int min_index;
+    float fcg;
+
+    for(int j=0;j<n;j++)
+        {
+            s[j].store();
+        }
+
+    for(int m=0;m<2;m++)
+    {
+        cout<<"What you want to do: \n1. Apply Bubble sort to CGPA wise\n2. Apply selection sort credit wise\n3. Apply search based on CGPA\n\n";
+    cin>>w;
+    cout<<endl;
+        if(w==1)
+    {sw=0;
+        for(int i=0;i<(n-1);i++)
+    {
+        for(int j=0; j<(n-i-1);j++)
+        {
+            if(s[j].cg>s[j+1].cg)
+            {
+                temp=s[j];
+                s[j]=s[j+1];
+                s[j+1]=temp;
+                sw++;
+
+            }
+        }
+    }
+    cout<<"Total swap happened: ";
+                cout<<sw;
+                cout<<"\n\n";
+    cout<<"After bubble sorting the students info: \n";
+    for(int j=0;j<n;j++)
+        {
+            s[j].info();
+        }
+    cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+
+
+
+    else if (w==2)
+    {sw=0;
+        for(int i=0; i<n; i++)
+            {
+                min_index = i;
+                int k=i;
+
+                for(int j=i+1; j<n; j++)
+                {
+                    if(s[k].credit > s[j].credit)
+                    {
+                        min_index = j;
+                        k=j;
+                        sw++;
+                    }
+                }
+
+
+                temp = s[min_index];
+                s[min_index] = s[i];
+                s[i] = temp;
+
+            }
+                cout<<"Total swap happened: ";
+                cout<<sw;
+                cout<<"\n\n";
+        cout<<"After selection sorting the students info: \n";
+
+            for(int j=0;j<n;j++)
+        {
+            s[j].info();
+        }
+        cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+
+
+
+    else if(w==3)
+    {
+        int k=0;
+        cout<<"Enter the CGPA you want to find: ";
+        cin>>fcg;
+        cout<<endl;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i].cg==fcg)
+            {
+                cout<<fcg<<" was found in the array.\n\n";
+                cout<<"Student info:\n";s[i].info();k++;
+                break;
+            }
+
+        }
+        if(k==0)
+        {
+                cout<<fcg<<" was not found in the array.\n";
+        }
+        cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+
+
+
+    else
+    {
+        cout<<"Error";
+        cout<<"Do you want to do any more operation:? (y/n)  ";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+
+    }
+
+
+    return 0;
+}
