@@ -1,0 +1,142 @@
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+class Product
+{
+    public:
+        int id,price;
+        string name,cat;
+
+        void store()
+        {
+            cout<<"Enter Product Name, ID, Category, unit price:\n";
+            cin>>name;
+            cin>>id;
+            cin>>cat;
+            cin>>price;
+            cout<<endl;
+        }
+
+        void info()
+        {
+            cout<<name<<"     "<<id<<"       "<<cat<<"       "<<price<<"\n";
+        }
+};
+
+int main()
+{
+    int n,w,c;
+    char a;
+    cout<<"How many Objects: ";
+    cin>>n;
+    Product p[n],temp;
+    int min_index;
+    string fname;
+
+    for(int j=0;j<n;j++)
+        {
+            p[j].store();
+        }
+
+    for(int m=0;m<2;m++)
+    {
+        cout<<"What you want to do: \n1. Apply Bubble sort price wise\n2. Apply selection sort price wise\n3. Apply search based on product name\n\n";
+    cin>>w;
+    cout<<endl;
+        if(w==1)
+    {
+        for(int i=0;i<(n-1);i++)
+        {
+            for(int j=0; j<(n-i-1);j++)
+            {
+                if(p[j].price>p[j+1].price)
+                {
+                    temp=p[j];
+                    p[j]=p[j+1];
+                    p[j+1]=temp;
+                }
+            }
+        }
+    cout<<"After bubble sorting the product info: \n";
+    cout<<"Name     ID      Category    Unit Price\n";
+    for(int j=0;j<n;j++)
+        {
+            p[j].info();
+        }
+    cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+    else if (w==2)
+    {
+        for(int i=0; i<n; i++)
+            {
+                min_index = i;
+                int k=i;
+
+                for(int j=i+1; j<n; j++)
+                {
+                    if(p[k].price > p[j].price)
+                    {
+                        min_index = j;
+                        k=j;
+                    }
+                }
+                temp = p[min_index];
+                p[min_index] = p[i];
+                p[i] = temp;
+
+            }
+        cout<<"After selection sorting the product info: \n";
+        cout<<"Name     ID      Category    Unit Price\n";
+
+            for(int j=0;j<n;j++)
+        {
+            p[j].info();
+        }
+        cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+    else if(w==3)
+    {
+        int k=0;
+        cout<<"Enter the name you want to find: ";
+        cin>>fname;
+        cout<<endl;
+        for(int i=0;i<n;i++)
+        {
+            if(p[i].name==fname)
+            {
+                cout<<fname<<" was found in the array.\n\n";
+                cout<<"Product info:\n";
+                cout<<"Name     ID      Category    Unit Price\n";
+                p[i].info();k++;
+                break;
+            }
+
+        }
+        if(k==0)
+        {
+                cout<<fname<<" was not found in the array.\n";
+        }
+        cout<<"Do you want to do any more operation:? (y/n)";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+    else
+    {
+        cout<<"Error";
+        cout<<"Do you want to do any more operation:? (y/n)  ";
+    cin>>a;
+    if(a=='y')m=0;
+    else if(a=='n')m=3;
+    }
+    }
+    return 0;
+}
